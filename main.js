@@ -35,15 +35,16 @@ button.addEventListener('click', () => {
     // if currently on
         // then stop
     if (!switched){
+        // logic to add dog img
+        generateRandomDog();
+        // play music
         let i = Math.floor(Math.random()*3);
         console.log(cache[i])
         audio = new Audio(`${cache[i]}`)
         audio.loop = true  // loop audio if needed
         audio.volume = 0.7;
         audio.play();
-        switched = true
-        // logic to add dog img
-        generateRandomDog();
+        switched = true;
     } else {
         audio.pause();
         audio = null;
@@ -54,39 +55,47 @@ button.addEventListener('click', () => {
 
 
 let dogImg;
+let oldImg;
 
 // create new random functions for dog images
 function generateRandomDog() {
-//     console.log('fetching dog');
-//     fetch('https://dog.ceo/api/breeds/image/random')
-//     .then((data) => data.json())  // return js object
-//     .then((data) => {
-//         // create img elment
-//         dogImg = document.createElement('div');
-//         dogImg.setAttribute('id', 'dog');
-//         // add url to img src
-//         console.log(`${data['message']}`)
-//         dogImg.setAttribute('src', data['message']);
-//         // add img element to visualizer div
-//         visualizer.appendChild(dogImg);
-//         // document.getElementById("dog").src = data['message']
-//         // udpate opacity
-//         visualizer.style.opacity = "1";
-//         console.log('appended');
-//     }).catch((err) => {
-//         console.log('Error');
-//         console.log(err);
-// });
+    console.log('fetching dog');
+    fetch('https://dog.ceo/api/breeds/image/random')
+    .then((data) => data.json())  // return js object
+    .then((data) => {
+        // remove current dog element
+        oldImg = document.getElementById('dog');
+        if (oldImg) {
+            oldImg.remove();
+        }
 
+        // create img elment
+        dogImg = document.createElement('img');
+        dogImg.setAttribute('id', 'dog');
+        // add url to img src
+        console.log(`${data['message']}`)
+        // dogImg.setAttribute('src', data['message']);
+        // dogImg.setAttribute('src', `url(${data['message']})`);
+        // dogImg.style.backgroundImage = `url(${data['message']})`
+        // add img element to visualizer div
+        visualizer.appendChild(dogImg);
+        document.getElementById("dog").src = data['message']
+        // udpate opacity
+        visualizer.style.opacity = "1";
+        console.log('appended');
+    }).catch((err) => {
+        console.log('Error');
+        console.log(err);
+});
 
-    // create img elment
-    dogImg = document.createElement('div');
-    dogImg.setAttribute('id', 'dog');
-    // add url to img src
-    dogImg.setAttribute('src', 'https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg');
-    // add img element to visualizer div
-    visualizer.appendChild(dogImg);
-    // udpate opacity
-    visualizer.style.opacity = "1";
-    console.log('appended');
+    // // create img elment
+    // dogImg = document.createElement('div');
+    // dogImg.setAttribute('id', 'dog');
+    // // add url to img src
+    // dogImg.setAttribute('src', 'https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg');
+    // // add img element to visualizer div
+    // visualizer.appendChild(dogImg);
+    // // udpate opacity
+    // visualizer.style.opacity = "1";
+    // console.log('appended');
 }

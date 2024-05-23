@@ -107,8 +107,9 @@ body {
 #dog {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     /* position: absolute;
     z-index: -1; */
-    /* background-size: cover; */
+    /* background-size: cover;
+    background-position: 50% 20%; */
 }
