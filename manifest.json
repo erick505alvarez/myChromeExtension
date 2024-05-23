@@ -1,0 +1,10 @@
+{
+    "manifest_version": 1,
+    "name": "Ambient Noise",
+    "description": "ambient noise player with visuals",
+    "version": "1.0",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "assets/logo.png"
+    }
+}
