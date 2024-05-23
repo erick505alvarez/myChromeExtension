@@ -24,7 +24,13 @@ const button = document.querySelector(".btn-random");
 const visualizer = document.querySelector(".visualizer");
 
 // create cache
-const cache = ["./assets/songs/ocean-surf.mp3", "./assets/songs/meditation.mp3", "./assets/songs/mountain-streams.mp3"]
+const cache = [
+    "./assets/songs/ocean-surf.mp3",
+    "./assets/songs/meditation.mp3",
+    "./assets/songs/mountain-streams.mp3",
+    "./assets/songs/ambient-music.mp3",
+    "./assets/songs/rain-and-thunder.mp3"
+ ]
 
 
 
@@ -38,7 +44,7 @@ button.addEventListener('click', () => {
         // logic to add dog img
         generateRandomDog();
         // play music
-        let i = Math.floor(Math.random()*3);
+        let i = Math.floor(Math.random()*cache.length);
         console.log(cache[i])
         audio = new Audio(`${cache[i]}`)
         audio.loop = true  // loop audio if needed
@@ -78,6 +84,11 @@ function generateRandomDog() {
         // dogImg.setAttribute('src', `url(${data['message']})`);
         // dogImg.style.backgroundImage = `url(${data['message']})`
         // add img element to visualizer div
+
+        // change visualizer class for background color
+        visualizer.classList.remove('empty');
+        visualizer.classList.add('full');
+
         visualizer.appendChild(dogImg);
         document.getElementById("dog").src = data['message']
         // udpate opacity
