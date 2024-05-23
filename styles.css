@@ -40,11 +40,25 @@ body {
     border-radius: 1rem;
     font-size: 3rem;
     font-weight: bold;
+    font-size: 9rem;
+
+
+    transform: translateY(0px);
+    transition: transform .2s ease-in-out;
 }
 
 .btn-random:hover {
     cursor: pointer;
+    transform: translateY(-2px);
+    transition: transform .2s ease-in-out;
+    background-color: #90FFFF;
 }
+
+.peace-sign {
+    position: relative;
+    top: -10px;
+}
+
 
 .container {
     background-color: var(--color-2);
@@ -70,6 +84,7 @@ body {
     display: flex;
     /* border: 10px solid red; */
 }
+
 .title {
     margin: 0;
     font-size: 3.5rem;;
